@@ -97,10 +97,14 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DarkPartNoiseScale: 1
+    - _DarkPartStep: 0.07
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
+    - _FoamAmount: 1.23
+    - _FoamCutoff: 2.11
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -117,14 +121,14 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _WaterDensity: 1
+    - _WaterDensity: 1.78
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BottomColor: {r: 0.09142043, g: 0.2546967, b: 0.4528302, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _BottomColor: {r: 0.11618012, g: 0.32585683, b: 0.5754717, a: 1}
+    - _Color: {r: 0.2147561, g: 0.61200124, b: 0.8962264, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _TopColor: {r: 0.3315058, g: 0.9150943, b: 0.8742766, a: 0.7176471}
+    - _TopColor: {r: 0.19508718, g: 0.754717, b: 0.7490568, a: 0.7176471}
   m_BuildTextureStacks: []
