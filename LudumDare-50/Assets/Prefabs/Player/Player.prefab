@@ -287,6 +287,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Movement
       objectReference: {fileID: 0}
+    - target: {fileID: 7433815824426066597, guid: 35435dff3ba6a7c46b19261cccd55338, type: 3}
+      propertyPath: m_target
+      value: 
+      objectReference: {fileID: 3328126528931206120}
+    - target: {fileID: 7433815824426066597, guid: 35435dff3ba6a7c46b19261cccd55338, type: 3}
+      propertyPath: m_Damping
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35435dff3ba6a7c46b19261cccd55338, type: 3}
 --- !u!114 &2391402138676740051 stripped
