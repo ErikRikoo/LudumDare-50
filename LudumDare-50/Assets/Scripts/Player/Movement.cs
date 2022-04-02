@@ -33,7 +33,9 @@ public class Movement : MonoBehaviour
         Vector2 planeMovement = m_Movement * m_Speed;
         Vector2 smoothedMovement = planeMovement * Time.deltaTime;
         m_target.transform.Translate(smoothedMovement.x, 0, smoothedMovement.y, Space.World);
-        Debug.Log($"Movement = {m_Movement}; planeMovement = {planeMovement}; smoothedMovement={smoothedMovement}");
+        Vector3 temp = new Vector3(m_Movement.x, 0, m_Movement.y);
+        Vector3 point_look =  transform.position + temp;
+        m_target.transform.LookAt(point_look);
         
         m_Animator.SetFloat(m_MovementParameter, planeMovement.magnitude / m_Speed);
     }
