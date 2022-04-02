@@ -9,13 +9,15 @@ public class Aspirateur : MonoBehaviour
 {
  //   [SerializeField] private VoidEvent event_;
 
+ [SerializeField] private Animator m_Animator;
+ 
  [SerializeField] private float P_expulsion = 100;
  
  [SerializeField] private float max_angle_detection = 60;
  [SerializeField] private Transform position_object;
  [SerializeField] private float Speed_come = 1;
- 
- 
+
+ private int m_AspireKey;
     private List<Collider> objectProche;
     private Collider objetToAspire;
 
@@ -25,7 +27,8 @@ public class Aspirateur : MonoBehaviour
     private void Awake()
     {
         objectProche = new List<Collider>();
-      //  Debug.Log("APPEL ");
+        m_AspireKey = Animator.StringToHash("Aspire");
+        //  Debug.Log("APPEL ");
     }
 
     private void Update()
@@ -41,6 +44,7 @@ public class Aspirateur : MonoBehaviour
       {
           find_object_to_aspire();
           aspire_enCours = true;
+          m_Animator?.SetBool(m_AspireKey, true);
       }
 
       if (context.phase == InputActionPhase.Canceled)
@@ -52,6 +56,7 @@ public class Aspirateur : MonoBehaviour
 
           objetToAspire = null;
 
+          m_Animator?.SetBool(m_AspireKey, false);
       }
     }
 
