@@ -78,7 +78,7 @@ MonoBehaviour:
     m_ActionName: MainActionMap/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6631875483978675953}
+      - m_Target: {fileID: 1325471819933502773}
         m_TargetAssemblyTypeName: Aspirateur, Assembly-CSharp
         m_MethodName: Fire
         m_Mode: 0
@@ -154,9 +154,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4abda286accaba44b996f53f6fe14a64, type: 3}
---- !u!114 &6631875483978675953 stripped
+--- !u!114 &1325471819933502773 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6730830060627065544, guid: 4abda286accaba44b996f53f6fe14a64, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1370383198838882572, guid: 4abda286accaba44b996f53f6fe14a64, type: 3}
   m_PrefabInstance: {fileID: 99521035591339065}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
