@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour
     public void OnMovement(InputAction.CallbackContext _context)
     {
         m_TargetMovement = _context.ReadValue<Vector2>();
+        
     }
 
 
@@ -23,6 +24,10 @@ public class Movement : MonoBehaviour
     {
         m_Movement = Vector2.Lerp(m_Movement, m_TargetMovement, m_Damping * Time.deltaTime);
         Vector2 planeMovement = m_Movement * (Time.deltaTime * m_Speed);
+        
+        Vector3 temp = new Vector3(m_Movement.x, 0, m_Movement.y);
+        Vector3 point_look =  transform.position + temp;
+        m_target.transform.LookAt(point_look);
         m_target.transform.Translate(planeMovement.x, 0, planeMovement.y, Space.World);
     }
 }
