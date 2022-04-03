@@ -123,14 +123,16 @@ public class Aspirateur : MonoBehaviour
 
     private void aspire_object()
     {
-        Vector3 movement_object = (position_object.transform.position-objetToAspire.transform.position) *Time.deltaTime * Speed_come;
-        Debug.Log("aspire object =  " + movement_object); 
-        if (Vector3.Distance(position_object.transform.position, objetToAspire.transform.position) < 0.3)
+        Vector3 finalPositionObject = position_object.transform.position +
+                                      (position_object.transform.forward * objetToAspire.bounds.extents.magnitude);
+        Vector3 movement_object = (finalPositionObject-objetToAspire.transform.position) *Time.deltaTime * Speed_come;
+        Debug.Log("aspire object =  " + finalPositionObject); 
+        if (Vector3.Distance(finalPositionObject, objetToAspire.transform.position) < 0.3)
         {
             objetToAspire.transform.parent = position_object;
             Debug.Log("backward =  " + -position_object.transform.forward);
             objetToAspire.transform.up = -position_object.transform.forward;
-            objetToAspire.transform.localPosition = Vector3.zero;
+            objetToAspire.transform.localPosition = objetToAspire.bounds.extents;
             aspire_enCours = false;
             Debug.Log("end of aspire object ");
         }
