@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Animator: {fileID: 0}
   P_expulsion: 100
   max_angle_detection: 60
-  position_object: {fileID: 0}
+  position_object: {fileID: 4007911187659150650}
   Speed_come: 1
 --- !u!54 &403129689
 Rigidbody:
@@ -128,10 +128,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 0}
-  P_expulsion: 10
+  P_expulsion: 200
   max_angle_detection: 60
   position_object: {fileID: 4007911187659150650}
-  Speed_come: 1
+  Speed_come: 10
 --- !u!54 &1513950793
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2731257759352600795}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.371, y: -0, z: 0.469}
+  m_LocalPosition: {x: 0, y: 0.303, z: 0.439}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

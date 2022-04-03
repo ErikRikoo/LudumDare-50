@@ -17,6 +17,8 @@ public class Aspirateur : MonoBehaviour
  [SerializeField] private float max_angle_detection = 60;
  [SerializeField] private Transform position_object;
  [SerializeField] private float Speed_come = 1;
+ [SerializeField] private Transform default_parent = null;
+ 
 
  private int m_AspireKey;
     private List<Collider> objectProche;
@@ -114,6 +116,8 @@ public class Aspirateur : MonoBehaviour
         if (Vector3.Distance(position_object.transform.position, objetToAspire.transform.position) < 0.3)
       {
           objetToAspire.transform.parent = position_object;
+          Debug.Log("backward =  " + -position_object.transform.forward);
+          objetToAspire.transform.up = -position_object.transform.forward;
           objetToAspire.transform.localPosition = Vector3.zero;
           aspire_enCours = false;
           Debug.Log("end of aspire object ");
@@ -130,8 +134,8 @@ public class Aspirateur : MonoBehaviour
     {
         if (objetToAspire == null)
             return;
-        objetToAspire.transform.parent = null;
-       // objetToAspire.enabled = true;
+        objetToAspire.transform.parent = default_parent;
+        objetToAspire.transform.up = Vector3.up;
         objetToAspire.attachedRigidbody.isKinematic = false;
         objetToAspire.attachedRigidbody.AddForce((transform.forward + transform.up)*P_expulsion);
         Debug.Log("expulse object = " );

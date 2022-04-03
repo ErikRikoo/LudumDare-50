@@ -147,7 +147,7 @@ MonoBehaviour:
   m_OnTankerFull:
     m_PersistentCalls:
       m_Calls: []
-  m_FillingRate: 0.1
+  m_FillingRate: 0.02
   m_WaterVisual: {fileID: 6778637192091816957}
   m_FillingDamping: 1
   FillingAmount: 0
@@ -181,6 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6778637193928124890}
   - component: {fileID: 6778637193928124891}
+  - component: {fileID: 1195322408}
   m_Layer: 0
   m_Name: TapZone
   m_TagString: Untagged
@@ -217,3 +218,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Collection: {fileID: 11400000, guid: 3b4794b33ce865e458765edd09ad005e, type: 2}
   m_Fillable: {fileID: 6778637193496940519}
+--- !u!65 &1195322408
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778637193928124889}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
