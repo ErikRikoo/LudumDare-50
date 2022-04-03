@@ -8,6 +8,8 @@ public class Tortue : MonoBehaviour,ITankerTapInteractable
 {
     [SerializeField] private float Speed_tortue = 1;
     
+    
+    private Animator m_Animator;
     private bool GoToHole = false;
     private TankerTap Hole_to_block;
     private void Update()
@@ -16,6 +18,12 @@ public class Tortue : MonoBehaviour,ITankerTapInteractable
         {
             movementToHole();
         }
+    }
+
+    private void Awake()
+    {
+        m_Animator = GetComponent<Animator>();
+        m_Animator.SetFloat("Movement", 0.5f);
     }
 
     public void movementToHole()
@@ -28,6 +36,7 @@ public class Tortue : MonoBehaviour,ITankerTapInteractable
             transform.up = Hole_to_block.transform.up;
             transform.localPosition = Vector3.zero;
             GoToHole = false;
+            m_Animator.SetFloat("Movement", 0.5f);
             Hole_to_block.StopFilling();
             Debug.Log("end of block hole ");
         }
@@ -43,6 +52,7 @@ public class Tortue : MonoBehaviour,ITankerTapInteractable
         // marcher jusqu'au trou
          Hole_to_block  = _tankerTap;
          GoToHole = true;
+         m_Animator.SetFloat("Movement", 1f);
          //arreter l'écoulement 
          
 
