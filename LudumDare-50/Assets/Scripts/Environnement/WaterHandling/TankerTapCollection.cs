@@ -10,6 +10,13 @@ namespace Environnement
     {
         private List<TankerTap> m_Elements = new List<TankerTap>();
 
+
+        void Reset()
+        {
+            Debug.Log("TankerTapCollection cleared");
+            m_Elements.Clear();
+        }
+
         public void AddElement(TankerTap _tap)
         {
             m_Elements.Add(_tap);
@@ -18,6 +25,14 @@ namespace Environnement
         public IEnumerable<TankerTap> GetValidTankers()
         {
             return this.Where(element => !element.IsBlocked);
+        }
+
+
+        //FIXME: je n'ai pas voulu modifier GetValidTankers pour le rampage des poulets,
+        //       car je ne voulais avoir que les tankers qui ne se remplissent pas
+        public IEnumerable<TankerTap> GetFillableTankers()
+        {
+            return this.Where(element => !element.IsFilling && !element.IsBlocked);
         }
 
         public IEnumerator<TankerTap> GetEnumerator()

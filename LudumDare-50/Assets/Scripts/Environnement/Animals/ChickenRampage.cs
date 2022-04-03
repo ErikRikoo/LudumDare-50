@@ -24,6 +24,10 @@ public class ChickenRampage : MonoBehaviour
     private float m_RampageTimer;
     private bool m_IsOnRampage = false;
 
+    public bool IsOnRampage => m_IsOnRampage;
+    public bool HasReachedTap => m_Path.reachedDestination;
+    public bool IsTargetStillValid => m_TargetTap != null;
+
     void Start()
     {
         m_Walker = GetComponent<RandomWalker>();
@@ -33,15 +37,14 @@ public class ChickenRampage : MonoBehaviour
 
     void Update()
     {
-        UpdateRampageTimer(Time.deltaTime);
-
-        if(IsOnRampage())
+        if(IsOnRampage)
         {
             UpdateRampage();
             return;
         }
 
-        if(DoRampageTrigger())
+        UpdateRampageTimer(Time.deltaTime);
+        if (DoRampageTrigger())
         {
             ResetRampageTimer();
             StartRampage();
@@ -51,43 +54,47 @@ public class ChickenRampage : MonoBehaviour
 
     private void StartRampage()
     {
+        Debug.Log("Start rampage");
+
+        IEnumerable<Environnement.TankerTap> valid_taps = AvailableTaps.GetFillableTankers();
+        if (valid_taps.Count() == 0)
+        {
+            Debug.Log("No available target for rampage");
+            return;
+        }
+
+        m_TargetTap = valid_taps.ElementAt(Random.Range(0, valid_taps.Count()));
+        m_DestinationSetter.target = m_TargetTap.transform;
         m_Walker.StopWalk();
+
+        m_IsOnRampage = true;
         m_Path.maxSpeed = RampageMaxSpeed;
-        GetRampageTarget();
     }
 
     private void UpdateRampage()
     {
-        if(HasReachedTap())
-        {            
+        if(!IsTargetStillValid)
+        {
+            Debug.Log("Target made invalid");
+            StopRampage();
+            return;
+        }
+
+        if(HasReachedTap)
+        {
+            Debug.Log("Reached target");
             //TODO: add chicken combat animation
             m_TargetTap.StartFilling();
-            StopRampage();
+            StopRampage();          
             return;
         }
     }
 
-
     private void StopRampage()
     {
+        Debug.Log("Stop rampage");
+        m_IsOnRampage = false;
         m_Walker.StartWalk();
-    }
-
-    private void GetRampageTarget()
-    {
-        IEnumerable<Environnement.TankerTap> valid_taps = AvailableTaps.GetValidTankers();
-        m_TargetTap = valid_taps.ElementAt(Random.Range(0, valid_taps.Count()));
-        m_DestinationSetter.target = m_TargetTap.transform;
-    }
-
-    private bool HasReachedTap()
-    {
-        return m_Path.reachedDestination;
-    }
-
-    public bool IsOnRampage()
-    {
-        return m_IsOnRampage;
     }
 
     private void UpdateRampageTimer(float DeltaTime)

@@ -15,6 +15,7 @@ public class RandomWalker : MonoBehaviour
 
     private Pathfinding.AIDestinationSetter m_DestinationSetter;
     private Pathfinding.AIPath m_Path;
+    private Transform m_InitialTarget;
     private bool m_IsWalking;
     private float m_ElapsedTime = 0;
 
@@ -22,6 +23,7 @@ public class RandomWalker : MonoBehaviour
     {
         m_DestinationSetter = GetComponent<Pathfinding.AIDestinationSetter>();
         m_Path = GetComponent<Pathfinding.AIPath>();
+        m_InitialTarget = m_DestinationSetter.target;
         StartWalk();
     }
 
@@ -29,6 +31,7 @@ public class RandomWalker : MonoBehaviour
     {
         m_IsWalking = true;
         m_Path.maxSpeed = MaxSpeed;
+        m_DestinationSetter.target = m_InitialTarget;
     }
 
     public void StopWalk() 

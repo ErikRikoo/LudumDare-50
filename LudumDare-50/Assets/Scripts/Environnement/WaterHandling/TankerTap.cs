@@ -9,16 +9,10 @@ namespace Environnement
         
         [SerializeField] private WaterFillable m_Fillable;
         private bool m_IsBlocked;
+        private bool m_IsFilling;
 
-      //  private int justTest = 0;
         public bool IsBlocked => m_IsBlocked;
-
-        // private void Update()
-        // {
-        //     if((justTest%100) == 0)
-        //         Debug.Log(("la position du parent = " + transform.position));
-        //     justTest++;
-        // }
+        public bool IsFilling => m_IsFilling;
 
         private void Awake()
         {
@@ -29,13 +23,16 @@ namespace Environnement
         public void StartFilling()
         {
             m_Fillable.StartFilling();
+            m_IsFilling = true;
         }
 
         public void StopFilling()
         {
             m_Fillable.StopFilling();
             m_IsBlocked = true;
+            m_IsFilling = false;
         }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out ITankerTapInteractable tankerTapInteract))

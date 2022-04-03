@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 632697282382865447}
   - component: {fileID: 926063167297280550}
   - component: {fileID: 4607501162113984499}
-  - component: {fileID: 4899566951328807131}
   - component: {fileID: 1896823323705257042}
+  - component: {fileID: 4899566951328807131}
   - component: {fileID: 1651280142018699122}
   - component: {fileID: 8674267862238101887}
   - component: {fileID: 5163872625595224743}
@@ -68,22 +68,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0.25, z: 0}
---- !u!114 &4899566951328807131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 374096741647575766}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 127f97326b5a6ef46818a3fe96cac3f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RampageMaxSpeed: 2
-  RampageMinTimer: 5
-  RampageRate: 0.355
-  AvailableTaps: {fileID: 0}
 --- !u!114 &1896823323705257042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +85,22 @@ MonoBehaviour:
   m_MaxDx: 2
   m_MaxDy: 0
   m_MaxDz: 2
+--- !u!114 &4899566951328807131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374096741647575766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127f97326b5a6ef46818a3fe96cac3f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RampageMaxSpeed: 2
+  RampageMinTimer: 5
+  RampageRate: 0.355
+  AvailableTaps: {fileID: 11400000, guid: 421981c53e3668d439ab3133e3e7bf0e, type: 2}
 --- !u!114 &1651280142018699122
 MonoBehaviour:
   m_ObjectHideFlags: 0
