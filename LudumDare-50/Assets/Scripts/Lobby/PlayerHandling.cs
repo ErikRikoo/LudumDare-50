@@ -142,6 +142,7 @@ namespace Lobby
             });
             lobbyPlayer.transform.parent = m_Parent;
             lobbyPlayer.transform.position = m_SpawnPositions[m_PlayerCount].position;
+            lobbyPlayer.transform.forward = m_SpawnPositions[m_PlayerCount].forward;
             lobbyPlayer.BindToHandler(this, m_PlayerColors[m_PlayerCount]);
             StartCoroutine(c_EnablePlayer(_input));
             ++PlayerCount;
@@ -151,7 +152,6 @@ namespace Lobby
         {
             yield return null;
             _input.SwitchCurrentActionMap("Menu");
-
         }
 
         private void StartGame()

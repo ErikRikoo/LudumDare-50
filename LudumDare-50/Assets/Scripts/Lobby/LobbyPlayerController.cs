@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace Lobby
@@ -7,6 +8,10 @@ namespace Lobby
     public class LobbyPlayerController : MonoBehaviour
     {
         [SerializeField] private Renderer m_RendererToUpdate;
+        [SerializeField] private AudioSource m_ReadySource;
+        
+        [SerializeField] private UnityEvent<bool> m_ReadynessChanged;
+        
         
         private Vector3 m_OriginalScale;
         private PlayerHandling m_PlayerHandling;
@@ -31,7 +36,9 @@ namespace Lobby
             }
             
             ++m_PlayerHandling.PlayerReadyCount;
-            transform.localScale *= 2f;
+            m_ReadySource.Play();
+            m_ReadynessChanged?.Invoke(true);
+            //transform.localScale *= 1.1f;
             m_IsReady = true;
         }
 
@@ -43,6 +50,7 @@ namespace Lobby
             }
             
             --m_PlayerHandling.PlayerReadyCount;
+            m_ReadynessChanged?.Invoke(false);
             transform.localScale = m_OriginalScale;
             m_IsReady = false;
         }

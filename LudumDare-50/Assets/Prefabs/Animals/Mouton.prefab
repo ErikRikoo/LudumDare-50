@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 7393016631587577840}
   - component: {fileID: 2767933971192557748}
   - component: {fileID: 4207445672371872523}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mouton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,6 +522,7 @@ MonoBehaviour:
       m_Calls: []
   m_MaxAmount: 0.5
   m_FillingRate: 0.1
+  m_FillingAmount: 0
 --- !u!135 &2767933971192557748
 SphereCollider:
   m_ObjectHideFlags: 0
