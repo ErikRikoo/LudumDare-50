@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -42,9 +43,14 @@ public class Aspirateur : MonoBehaviour
       //Debug.Log("phase  = " +context.phase);
       if (context.phase == InputActionPhase.Started)
       {
-          find_object_to_aspire();
-          aspire_enCours = true;
           m_Animator?.SetBool(m_AspireKey, true);
+          find_object_to_aspire();
+          if (objetToAspire == null)
+              return;
+          aspire_enCours = true;
+          objetToAspire.GetComponent<Rigidbody>().isKinematic = true;
+          //objetToAspire.enabled = false;
+          
       }
 
       if (context.phase == InputActionPhase.Canceled)
@@ -64,6 +70,7 @@ public class Aspirateur : MonoBehaviour
     {
           
             objectProche.Add(other);
+            
     }
 
     private void OnTriggerExit(Collider other)
@@ -102,21 +109,18 @@ public class Aspirateur : MonoBehaviour
 
     private void aspire_object()
     {
-        if(objetToAspire == null)
-            return;
-        Vector3 movement_object = new Vector3(position_object.transform.position.x-objetToAspire.transform.position.x,position_object.transform.position.y-objetToAspire.transform.position.y, position_object.transform.position.z-objetToAspire.transform.position.z) *Time.deltaTime * Speed_come;
-        Debug.Log("aspire object ");
-      //  objetToAspire.transform.position = position_object.position;
-      if (Vector3.Distance(position_object.transform.position, objetToAspire.transform.position) < 0.3)
+        Vector3 movement_object = (position_object.transform.position-objetToAspire.transform.position) *Time.deltaTime * Speed_come;
+        Debug.Log("aspire object =  " + movement_object);
+        if (Vector3.Distance(position_object.transform.position, objetToAspire.transform.position) < 0.3)
       {
           objetToAspire.transform.parent = position_object;
-          objetToAspire.attachedRigidbody.isKinematic = true;
+          objetToAspire.transform.localPosition = Vector3.zero;
           aspire_enCours = false;
           Debug.Log("end of aspire object ");
       }
       else
       {
-          objetToAspire.transform.Translate(movement_object);
+          objetToAspire.transform.Translate(movement_object,Space.World);
       }
 
       
@@ -127,6 +131,7 @@ public class Aspirateur : MonoBehaviour
         if (objetToAspire == null)
             return;
         objetToAspire.transform.parent = null;
+       // objetToAspire.enabled = true;
         objetToAspire.attachedRigidbody.isKinematic = false;
         objetToAspire.attachedRigidbody.AddForce((transform.forward + transform.up)*P_expulsion);
         Debug.Log("expulse object = " );
