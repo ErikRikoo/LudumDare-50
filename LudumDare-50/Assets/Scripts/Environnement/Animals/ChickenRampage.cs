@@ -5,21 +5,30 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(RandomWalker))]
+[RequireComponent(typeof(Pathfinding.AIDestinationSetter))]
+[RequireComponent(typeof(Pathfinding.AIPath))]
 public class ChickenRampage : MonoBehaviour
 {
+    [SerializeField] float RampageMaxSpeed;
     [SerializeField] float RampageMinTimer;
     [Range(0, 1)]
     [SerializeField] float RampageRate;
     [SerializeField] Environnement.TankerTapCollection AvailableTaps;
 
-    private RandomWalker m_Walker;
-    private float m_RampageTimer;
+    private Pathfinding.AIDestinationSetter m_DestinationSetter;
+    private Pathfinding.AIPath m_Path;
+
     private Environnement.TankerTap m_TargetTap;
+    private RandomWalker m_Walker;
+
+    private float m_RampageTimer;
     private bool m_IsOnRampage = false;
 
     void Start()
     {
         m_Walker = GetComponent<RandomWalker>();
+        m_DestinationSetter = GetComponent<Pathfinding.AIDestinationSetter>();
+        m_Path = GetComponent<Pathfinding.AIPath>();
     }
 
     void Update()
@@ -43,43 +52,37 @@ public class ChickenRampage : MonoBehaviour
     private void StartRampage()
     {
         m_Walker.StopWalk();
-        TargetNewTap();
+        m_Path.maxSpeed = RampageMaxSpeed;
+        GetRampageTarget();
     }
 
     private void UpdateRampage()
     {
         if(HasReachedTap())
-        {
+        {            
             //TODO: add chicken combat animation
             m_TargetTap.StartFilling();
             StopRampage();
             return;
         }
-
-        ChaseTap();
-
     }
 
-    private void ChaseTap()
-    {
-        //TODO: implement chase
-    }
 
     private void StopRampage()
     {
         m_Walker.StartWalk();
     }
 
-    private void TargetNewTap()
+    private void GetRampageTarget()
     {
         IEnumerable<Environnement.TankerTap> valid_taps = AvailableTaps.GetValidTankers();
         m_TargetTap = valid_taps.ElementAt(Random.Range(0, valid_taps.Count()));
+        m_DestinationSetter.target = m_TargetTap.transform;
     }
 
     private bool HasReachedTap()
     {
-        // FIXME: handle chicken reach
-        return false;
+        return m_Path.reachedDestination;
     }
 
     public bool IsOnRampage()
@@ -93,7 +96,7 @@ public class ChickenRampage : MonoBehaviour
     }
     private void ResetRampageTimer()
     {
-    m_RampageTimer = 0;
+        m_RampageTimer = 0;
     }
 
     private bool DoRampageTrigger()

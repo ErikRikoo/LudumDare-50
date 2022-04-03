@@ -2,55 +2,68 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Pathfinding.AIDestinationSetter))]
+[RequireComponent(typeof(Pathfinding.AIPath))]
 public class RandomWalker : MonoBehaviour
 {
 
-    [Range (0f, 5f)]
-    [SerializeField] float speed;
-    [Range(0, 360)]
-    [SerializeField] float min_rotation;
-    [Range(0, 360)]
-    [SerializeField] float max_rotation;
+    [SerializeField] float MaxSpeed = 1;
+    [SerializeField] int DirectionUpdateTime;
+    [SerializeField] float m_MaxDx;
+    [SerializeField] float m_MaxDy;
+    [SerializeField] float m_MaxDz;
 
-    [SerializeField] int frames_to_rotate;
-    [SerializeField] int direction_update_time;
+    private Pathfinding.AIDestinationSetter m_DestinationSetter;
+    private Pathfinding.AIPath m_Path;
+    private bool m_IsWalking;
+    private float m_ElapsedTime = 0;
 
-    private Rigidbody m_rb;
-    private bool m_is_walking;
-    private int m_remaining_frames_to_rotate = 0;
-    private float m_delta_rotation;
-    private float m_elapsed_time = 0;
-
-    // Start is called before the first frame update
     void Start()
     {
-        m_rb = GetComponent<Rigidbody>();
+        m_DestinationSetter = GetComponent<Pathfinding.AIDestinationSetter>();
+        m_Path = GetComponent<Pathfinding.AIPath>();
         StartWalk();
-        UpdateDirection();
     }
-
 
     public void StartWalk() 
     {
-        m_is_walking = true;
+        m_IsWalking = true;
+        m_Path.maxSpeed = MaxSpeed;
     }
 
     public void StopWalk() 
     {
-        m_is_walking = false;
+        m_IsWalking = false;
     }
 
     public bool IsWalking()
     {
-        return m_is_walking;
+        return m_IsWalking;
     }
 
-    public bool IsRotating()
+    private void UpdateTimer(float time) 
     {
-        return m_remaining_frames_to_rotate > 0;
+        m_ElapsedTime += time;
     }
 
-    // Update is called once per frame
+    private void ResetTimer()
+    {
+        m_ElapsedTime = 0;
+    }
+    private bool DoMoveTarget()
+    {
+        return DirectionUpdateTime < m_ElapsedTime || m_Path.reachedDestination;
+    }
+
+    private void MoveTarget()
+    {
+        float dx, dy, dz;
+        dx = Random.Range(-m_MaxDx, m_MaxDx);
+        dy = Random.Range(-m_MaxDy, m_MaxDy);
+        dz = Random.Range(-m_MaxDz, m_MaxDz);
+        m_DestinationSetter.target.position += new Vector3(dx, dy, dz);
+    }
+  
     void Update()
     {
         if (!IsWalking())
@@ -58,39 +71,12 @@ public class RandomWalker : MonoBehaviour
             return;
         }
 
-        //still perform the rotation
-        if(IsRotating())
+        UpdateTimer(Time.deltaTime);
+
+        if (DoMoveTarget())
         {
-            UpdateDirection();
-            return;
+            MoveTarget();
+            ResetTimer();
         }
-
-        // take a new direction
-        m_elapsed_time += Time.deltaTime;
-        if (direction_update_time < m_elapsed_time)
-        {
-            ChangeDirection();
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        ChangeDirection();
-    }
-
-    void ChangeDirection()
-    {
-        int sens = Random.Range(0, 2) * 2 - 1;
-        float angle = sens * Random.Range(min_rotation, max_rotation);
-        m_delta_rotation = angle / (float)frames_to_rotate;
-        m_remaining_frames_to_rotate = frames_to_rotate;
-        m_elapsed_time = 0;
-    }
-
-    private void UpdateDirection() 
-    {
-        transform.Rotate(0, m_delta_rotation, 0, Space.World);
-        m_rb.velocity = speed * transform.forward;
-        m_remaining_frames_to_rotate -= 1;
     }
 }
