@@ -33,7 +33,8 @@ namespace Environnement
         private void Awake()
         {
             m_Collider = GetComponent<BoxCollider>();
-            m_OriginalBounds = m_Collider.bounds;
+            m_OriginalBounds = new Bounds(m_Collider.center, m_Collider.size);
+            Debug.Log(m_OriginalBounds);
             UpdateColliderAndVisual();
         }
 
@@ -45,7 +46,6 @@ namespace Environnement
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log(other.gameObject.name);
             
             if (other.TryGetComponent(out IWaterInteractable waterInteract))
             {
@@ -67,7 +67,8 @@ namespace Environnement
             newSize.y *= m_RealAmount;
             m_Collider.size = newSize;
             var newPosition = m_OriginalBounds.center;
-            newPosition.y = Mathf.LerpUnclamped(m_OriginalBounds.min.y, newPosition.y, m_RealAmount);
+            var newHeight = Mathf.LerpUnclamped(m_OriginalBounds.min.y, newPosition.y, m_RealAmount);
+            newPosition.y = newHeight;
             m_Collider.center = newPosition;
             m_Collider.enabled = m_RealAmount > 0;
             
@@ -78,8 +79,8 @@ namespace Environnement
             }
             m_WaterVisual.SetActive(m_RealAmount > 0);
             var newWaterPosition = m_WaterVisual.transform.localPosition;
-            newWaterPosition.y = m_Collider.bounds.max.y;
-            m_WaterVisual.transform.position = newWaterPosition;
+            newWaterPosition.y = newHeight;
+            m_WaterVisual.transform.localPosition = newWaterPosition;
 
             if (m_RealAmount <= 0)
             {
