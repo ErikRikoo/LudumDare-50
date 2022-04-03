@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 public class Aspirateur : MonoBehaviour
 {
- //   [SerializeField] private VoidEvent event_;
+    [SerializeField] private ColliderEvent TakenByCanon;
 
  [SerializeField] private Animator m_Animator;
  
@@ -31,12 +31,24 @@ public class Aspirateur : MonoBehaviour
     {
         objectProche = new List<Collider>();
         m_AspireKey = Animator.StringToHash("Aspire");
-        //  Debug.Log("APPEL ");
+        TakenByCanon.Register(DropObject);
+    }
+
+    private void DropObject(Collider _collider)
+    {
+       // Debug.Log("le canon a choppé un objet = " + _collider.GetComponent<Transform>().name);
+        if (_collider == objetToAspire)
+        {
+            objetToAspire.transform.parent = default_parent;
+            objetToAspire.transform.up = Vector3.up;
+            objetToAspire.attachedRigidbody.isKinematic = false;
+            objetToAspire = null;
+        }
     }
 
     private void Update()
     {
-        if (aspire_enCours)
+        if (aspire_enCours && (objetToAspire != null))
             aspire_object();
     }
 
@@ -112,20 +124,20 @@ public class Aspirateur : MonoBehaviour
     private void aspire_object()
     {
         Vector3 movement_object = (position_object.transform.position-objetToAspire.transform.position) *Time.deltaTime * Speed_come;
-        Debug.Log("aspire object =  " + movement_object);
+        Debug.Log("aspire object =  " + movement_object); 
         if (Vector3.Distance(position_object.transform.position, objetToAspire.transform.position) < 0.3)
-      {
-          objetToAspire.transform.parent = position_object;
-          Debug.Log("backward =  " + -position_object.transform.forward);
-          objetToAspire.transform.up = -position_object.transform.forward;
-          objetToAspire.transform.localPosition = Vector3.zero;
-          aspire_enCours = false;
-          Debug.Log("end of aspire object ");
-      }
-      else
-      {
-          objetToAspire.transform.Translate(movement_object,Space.World);
-      }
+        {
+            objetToAspire.transform.parent = position_object;
+            Debug.Log("backward =  " + -position_object.transform.forward);
+            objetToAspire.transform.up = -position_object.transform.forward;
+            objetToAspire.transform.localPosition = Vector3.zero;
+            aspire_enCours = false;
+            Debug.Log("end of aspire object ");
+        }
+        else
+        {
+            objetToAspire.transform.Translate(movement_object,Space.World);
+        }
 
       
     }

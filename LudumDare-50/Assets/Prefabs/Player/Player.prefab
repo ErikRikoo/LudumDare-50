@@ -206,6 +206,18 @@ PrefabInstance:
       propertyPath: m_Animator
       value: 
       objectReference: {fileID: 2951652544208488382}
+    - target: {fileID: 1370383198838882572, guid: 4abda286accaba44b996f53f6fe14a64, type: 3}
+      propertyPath: TakenByCanon
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d01fc5e340dabe4eabe4fff201fbed4, type: 2}
+    - target: {fileID: 6730830060627065544, guid: 4abda286accaba44b996f53f6fe14a64, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6730830060627065544, guid: 4abda286accaba44b996f53f6fe14a64, type: 3}
+      propertyPath: TakenByCanon
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d01fc5e340dabe4eabe4fff201fbed4, type: 2}
     - target: {fileID: 6864555219499042377, guid: 4abda286accaba44b996f53f6fe14a64, type: 3}
       propertyPath: m_RootOrder
       value: 0
