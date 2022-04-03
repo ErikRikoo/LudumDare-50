@@ -8,7 +8,7 @@ namespace Environnement
     [CreateAssetMenu(fileName = "TankerTapCollection", menuName = "Water/Tanker Tap Collection", order = 0)]
     public class TankerTapCollection : ScriptableObject, IEnumerable<TankerTap>
     {
-        private List<TankerTap> m_Elements;
+        private List<TankerTap> m_Elements = new List<TankerTap>();
 
         public void AddElement(TankerTap _tap)
         {

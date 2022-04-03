@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 926063167297280550}
   - component: {fileID: 4607501162113984499}
   - component: {fileID: 8799411250179480412}
+  - component: {fileID: 4899566951328807131}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Untagged
@@ -73,14 +74,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 374096741647575766}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee338e3d9b978b34abf74da11cf66997, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d0620b111bc6ba4fbf4d527b585ffb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  min_rotation: 0
-  max_rotation: 0
-  frames_to_rotate: 0
-  direction_update_time: 2
+  speed: 0.3
+  min_rotation: 20
+  max_rotation: 60
+  frames_to_rotate: 120
+  direction_update_time: 5
+--- !u!114 &4899566951328807131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374096741647575766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127f97326b5a6ef46818a3fe96cac3f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RampageMinTimer: 0
+  RampageRate: 0.355
+  AvailableTaps: {fileID: 0}
 --- !u!1 &3764754688254406928
 GameObject:
   m_ObjectHideFlags: 0
