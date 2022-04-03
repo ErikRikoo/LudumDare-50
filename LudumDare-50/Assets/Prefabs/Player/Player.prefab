@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8296074530105961099}
   - component: {fileID: 6785049879547139456}
   - component: {fileID: 1508727724}
+  - component: {fileID: 2788568012136030388}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -94,9 +95,41 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5d2da14a-6dbe-49d6-b84d-96c3835c0c91
     m_ActionName: MainActionMap/Aspirateur[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2788568012136030388}
+        m_TargetAssemblyTypeName: Lobby.LobbyPlayerController, Assembly-CSharp
+        m_MethodName: OnReady
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 393e8f44-dd4e-4c9d-8490-d75e68dc2b29
+    m_ActionName: Menu/Ready[/Keyboard/e,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2788568012136030388}
+        m_TargetAssemblyTypeName: Lobby.LobbyPlayerController, Assembly-CSharp
+        m_MethodName: OnCancelReady
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fc1602be-3811-458f-b944-460b3500c65a
+    m_ActionName: Menu/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: MainActionMap
+  m_DefaultActionMap: 9449a01a-1f7e-46d8-aa5c-726d2f9a1bda
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &8296074530105961099
@@ -145,6 +178,18 @@ CapsuleCollider:
   m_Height: 0.7780633
   m_Direction: 1
   m_Center: {x: 0, y: 0.35864472, z: -0.02819848}
+--- !u!114 &2788568012136030388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3328126528931206120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786625fa8a894ab4a3ceeea499c5c353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &99521035591339065
 PrefabInstance:
   m_ObjectHideFlags: 0
