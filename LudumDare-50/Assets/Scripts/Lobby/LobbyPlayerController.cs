@@ -6,7 +6,8 @@ namespace Lobby
 {
     public class LobbyPlayerController : MonoBehaviour
     {
-
+        [SerializeField] private Renderer m_RendererToUpdate;
+        
         private Vector3 m_OriginalScale;
         private PlayerHandling m_PlayerHandling;
         private bool m_IsReady;
@@ -16,9 +17,10 @@ namespace Lobby
             m_OriginalScale = transform.localScale;
         }
 
-        public void BindToHandler(PlayerHandling playerHandling)
+        public void BindToHandler(PlayerHandling playerHandling, Color _playerColor)
         {
             m_PlayerHandling = playerHandling;
+            m_RendererToUpdate.material.color = _playerColor;
         }
 
         public void OnReady(InputAction.CallbackContext _context)

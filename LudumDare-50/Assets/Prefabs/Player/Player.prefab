@@ -129,7 +129,7 @@ MonoBehaviour:
     m_ActionName: Menu/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 9449a01a-1f7e-46d8-aa5c-726d2f9a1bda
+  m_DefaultActionMap: Idle
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &8296074530105961099
@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786625fa8a894ab4a3ceeea499c5c353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_RendererToUpdate: {fileID: 2560944377276107811}
 --- !u!1001 &99521035591339065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -324,6 +325,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c3683817c52e34fb9e3d6a05f66d00, type: 3}
+--- !u!137 &2560944377276107811 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 827585969857229131, guid: c2c3683817c52e34fb9e3d6a05f66d00, type: 3}
+  m_PrefabInstance: {fileID: 2951652544167574888}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &2951652544208488382 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 110148310, guid: c2c3683817c52e34fb9e3d6a05f66d00, type: 3}
