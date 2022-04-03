@@ -19,6 +19,7 @@ namespace Environnement
         [SerializeField] private float m_MaxAmount;
         [SerializeField] private float m_FillingRate;
 
+        [SerializeField]
         private float m_FillingAmount;
         private Collider m_Collider;
 
@@ -53,30 +54,40 @@ namespace Environnement
         private IEnumerator c_SpongeWater(WaterFillable _waterFillable)
         {
             float startTime = Time.time + Random.Range(0, 5.17f);
+            _waterFillable.AttachOnSurface(Collider);
+
             while (true)
             {
                 yield return null;
                 AbsorbWater(ref _waterFillable.FillingAmount);
-                _waterFillable.AttachOnSurface(Collider, Time.time - startTime);
             }
         }
 
         public void OnEnterWater(WaterFillable _fillable)
         {
+            if (m_Coroutine != null)
+            {
+                return;
+            }
             m_Coroutine = StartCoroutine(c_SpongeWater(_fillable));
 
             if (Rigidbody != null)
             {
-                Rigidbody.isKinematic = true;
+                Rigidbody.useGravity = false;
             }
         }
 
         public void OnExitWater(WaterFillable _fillable)
         {
-            StopCoroutine(m_Coroutine);
+            if (m_Coroutine != null)
+            {
+                StopCoroutine(m_Coroutine);
+                m_Coroutine = null;
+            }
+
             if (Rigidbody != null)
             {
-                Rigidbody.isKinematic = false;
+                Rigidbody.useGravity = true;
             }
         }
     }

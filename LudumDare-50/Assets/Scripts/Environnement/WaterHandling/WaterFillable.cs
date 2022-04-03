@@ -15,6 +15,7 @@ namespace Environnement
         [Header("Main Settings")]
         [SerializeField] private float m_FillingRate;
         [SerializeField] private GameObject m_WaterVisual;
+        [SerializeField] private Transform m_WaterSurface;
         [SerializeField]private float m_FillingDamping = 1;
 
         private BoxCollider m_Collider;
@@ -23,6 +24,8 @@ namespace Environnement
         [HideInInspector]
         public float FillingAmount;
         private float m_RealAmount;
+
+        private float m_FillingStartTime;
 
 
         private Coroutine m_FillingCoroutine;
@@ -38,11 +41,12 @@ namespace Environnement
         {
             m_RealAmount = Mathf.Lerp(m_RealAmount, FillingAmount, m_FillingDamping * Time.deltaTime);
             UpdateColliderAndVisual();
-
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log(other.gameObject.name);
+            
             if (other.TryGetComponent(out IWaterInteractable waterInteract))
             {
                 waterInteract.OnEnterWater(this);
@@ -76,10 +80,20 @@ namespace Environnement
             var newWaterPosition = m_WaterVisual.transform.localPosition;
             newWaterPosition.y = m_Collider.bounds.max.y;
             m_WaterVisual.transform.position = newWaterPosition;
+
+            if (m_RealAmount <= 0)
+            {
+                return;
+            }
+            m_SpongeNoise.GetSignal(Time.time - m_FillingStartTime, out Vector3 _pos, out Quaternion _rotation);
+            newPosition = m_WaterSurface.transform.position;
+            newPosition.y = _pos.y * m_SpongeNoiseIntensity;
+            m_WaterSurface.transform.localPosition = newPosition;
         }
 
         public void StartFilling()
         {
+            m_FillingStartTime = Time.time;
             m_FillingCoroutine = StartCoroutine(c_Fill());
         }
 
@@ -106,18 +120,14 @@ namespace Environnement
         [SerializeField] private NoiseSettings m_SpongeNoise;
         [SerializeField] private float m_SpongeNoiseIntensity;
 
-        public void AttachOnSurface(Collider _collider, float _time)
+        public void AttachOnSurface(Collider _collider)
         {
-            var bounds = m_Collider.bounds;
             var newPosition = _collider.transform.localPosition;
-            m_SpongeNoise.GetSignal(_time, out Vector3 _pos, out Quaternion _rotation);
-            var targetHeight = bounds.max.y + _collider.bounds.extents.y + _pos.y * m_SpongeNoiseIntensity
-                               - m_SpongeHeightOffset;
-
-            
+            var targetHeight = _collider.bounds.extents.y - m_SpongeHeightOffset;
             newPosition.y = Mathf.LerpUnclamped(newPosition.y, targetHeight, m_SpongeMovementDamping);
-            
-            _collider.transform.position = newPosition;
+
+            _collider.transform.parent = m_WaterSurface;
+            _collider.transform.localPosition = newPosition;
         }
     }
 }
