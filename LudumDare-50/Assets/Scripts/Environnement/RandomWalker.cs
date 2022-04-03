@@ -29,6 +29,7 @@ public class RandomWalker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //still perform the rotation
         if(m_frame_count < frames_to_rotate)
         {
             m_frame_count += 1;
@@ -36,6 +37,7 @@ public class RandomWalker : MonoBehaviour
             return;
         }
 
+        // take a new direction
         m_elapsed_time += Time.deltaTime;
         if (direction_update_time < m_elapsed_time)
         {
@@ -44,9 +46,16 @@ public class RandomWalker : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        ChangeDirection();
+        m_elapsed_time = 0;
+    }
+
     void ChangeDirection()
     {
-        float angle = Random.Range(-max_rotation, max_rotation);
+        int sens = Random.Range(0, 2) * 2 - 1;
+        float angle = sens * Random.Range(min_rotation, max_rotation);
         m_delta_rot = angle / (float)frames_to_rotate;
         m_frame_count = 0;
     }
