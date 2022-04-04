@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &840035095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 840035096}
+  m_Layer: 0
+  m_Name: lanceur
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &840035096
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840035095}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3147134930167093479}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
 --- !u!1 &2166100348077094976
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +152,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 1.178301, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 840035096}
   m_Father: {fileID: 1951177383739320773}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -425,6 +457,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8085427425465375239}
   - component: {fileID: 8628769457829707246}
+  - component: {fileID: 6054800726886966829}
+  - component: {fileID: 6402909499033839457}
+  - component: {fileID: 1914721642}
   m_Layer: 0
   m_Name: Canon
   m_TagString: Untagged
@@ -469,6 +504,60 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!135 &6054800726886966829
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8898802574486978749}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.2558126
+  m_Center: {x: -0.19089758, y: 1.1538742, z: -0.025591023}
+--- !u!114 &6402909499033839457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8898802574486978749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2195fce97301d604c93ee2cbeb8665de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lanceur: {fileID: 840035096}
+--- !u!114 &1914721642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8898802574486978749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59692cc1d5024cefa15579bae98252f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ActionName: Canon_Armature|Canon_Fire
+  m_OnActionEnded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6402909499033839457}
+        m_TargetAssemblyTypeName: Environnement.Canon, Assembly-CSharp
+        m_MethodName: eject_object
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9087858137044175605
 GameObject:
   m_ObjectHideFlags: 0
