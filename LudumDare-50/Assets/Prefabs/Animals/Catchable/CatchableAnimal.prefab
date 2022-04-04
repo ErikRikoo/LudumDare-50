@@ -7,9 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1017904609955518114, guid: bcf19e2e78f4f384c8c58f3adb8cc270, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1017904612029848663, guid: bcf19e2e78f4f384c8c58f3adb8cc270, type: 3}
       propertyPath: m_Name
-      value: RandomWalker
+      value: CatchableAnimal
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017904612029848663, guid: bcf19e2e78f4f384c8c58f3adb8cc270, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1017904612029848667, guid: bcf19e2e78f4f384c8c58f3adb8cc270, type: 3}
       propertyPath: m_RootOrder
@@ -57,3 +65,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcf19e2e78f4f384c8c58f3adb8cc270, type: 3}
+--- !u!1 &4504946665777671297 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1017904612029848663, guid: bcf19e2e78f4f384c8c58f3adb8cc270, type: 3}
+  m_PrefabInstance: {fileID: 3505097685487546582}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &5128044802779747075
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4504946665777671297}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

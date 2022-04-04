@@ -38,7 +38,7 @@ namespace Lobby
             
             ++m_PlayerHandling.PlayerReadyCount;
             m_ReadySource.Play();
-            m_Animator.SetBool("Ready",true);
+            m_Animator.SetTrigger("ReadyChanged");
             m_ReadynessChanged?.Invoke(true);
             //transform.localScale *= 1.1f;
             m_IsReady = true;
@@ -52,7 +52,7 @@ namespace Lobby
             }
             
             --m_PlayerHandling.PlayerReadyCount;
-            m_Animator.SetBool("Ready",false);
+            m_Animator.SetTrigger("ReadyChanged");
             m_ReadynessChanged?.Invoke(false);
             transform.localScale = m_OriginalScale;
             m_IsReady = false;
