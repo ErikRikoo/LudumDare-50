@@ -8,9 +8,9 @@ namespace Environnement
     [CreateAssetMenu(fileName = "TankerTapCollection", menuName = "Water/Tanker Tap Collection", order = 0)]
     public class TankerTapCollection : ScriptableObject, IEnumerable<TankerTap>
     {
-        private List<TankerTap> m_Elements = new List<TankerTap>();
-
-
+        [SerializeField]
+        private List<TankerTap> m_Elements = new();
+        
         void Reset()
         {
             Debug.Log("TankerTapCollection cleared");
@@ -20,6 +20,11 @@ namespace Environnement
         public void AddElement(TankerTap _tap)
         {
             m_Elements.Add(_tap);
+        }
+        
+        public void RemoveElement(TankerTap _item)
+        {
+            m_Elements.Remove(_item);
         }
 
         public IEnumerable<TankerTap> GetValidTankers()

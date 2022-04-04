@@ -92,7 +92,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_OnTankerFull:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: a1cd395c00a76e14e9e743ee3e895192, type: 2}
+        m_TargetAssemblyTypeName: UnityAtoms.BaseAtoms.VoidEvent, UnityAtoms.UnityAtomsBaseAtoms.Runtime
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_FillingRate: 0.02
   m_WaterVisual: {fileID: 6778637192091816957}
   m_WaterSurface: {fileID: 340863442}
@@ -338,8 +350,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 6778637193496940513}
     m_Modifications:
     - target: {fileID: 767268660, guid: cbe6347cc82c11047b7858c4ba161042, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.00000023841858
+      objectReference: {fileID: 0}
+    - target: {fileID: 767268660, guid: cbe6347cc82c11047b7858c4ba161042, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00000047683713
+      objectReference: {fileID: 0}
+    - target: {fileID: 767268660, guid: cbe6347cc82c11047b7858c4ba161042, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 7074711277466344154, guid: cbe6347cc82c11047b7858c4ba161042, type: 3}
       propertyPath: m_Name
@@ -417,13 +437,13 @@ PositionConstraint:
   m_GameObject: {fileID: 1251744939844472509}
   m_Enabled: 1
   m_Weight: 1
-  m_TranslationAtRest: {x: 0, y: 0, z: 0}
-  m_TranslationOffset: {x: 0, y: 0, z: 0}
+  m_TranslationAtRest: {x: 0, y: 0, z: 0.03}
+  m_TranslationOffset: {x: 0, y: 0, z: 0.03}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
   m_IsContraintActive: 1
-  m_IsLocked: 0
+  m_IsLocked: 1
   m_Sources:
   - sourceTransform: {fileID: 6778637192091816952}
     weight: 1

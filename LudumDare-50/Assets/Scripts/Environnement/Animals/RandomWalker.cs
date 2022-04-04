@@ -1,29 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
+using Pathfinding;
 using UnityEngine;
 
-[RequireComponent(typeof(Pathfinding.AIDestinationSetter))]
-[RequireComponent(typeof(Pathfinding.AIPath))]
+[RequireComponent(typeof(AIPath))]
 public class RandomWalker : MonoBehaviour
 {
-
     [SerializeField] float MaxSpeed = 1;
     [SerializeField] int DirectionUpdateTime;
-    [SerializeField] float m_MaxDx;
-    [SerializeField] float m_MaxDy;
-    [SerializeField] float m_MaxDz;
+    [SerializeField] private int m_MaxDx;
+    [SerializeField] private int m_MaxDz;
 
-    private Pathfinding.AIDestinationSetter m_DestinationSetter;
-    private Pathfinding.AIPath m_Path;
+
+    private AIPath m_Path;
     private Transform m_InitialTarget;
     private bool m_IsWalking;
     private float m_ElapsedTime = 0;
 
     void Start()
     {
-        m_DestinationSetter = GetComponent<Pathfinding.AIDestinationSetter>();
-        m_Path = GetComponent<Pathfinding.AIPath>();
-        m_InitialTarget = m_DestinationSetter.target;
+        m_Path = GetComponent<AIPath>();
+        m_Path.maxSpeed = MaxSpeed;
         StartWalk();
     }
 
@@ -31,7 +26,7 @@ public class RandomWalker : MonoBehaviour
     {
         m_IsWalking = true;
         m_Path.maxSpeed = MaxSpeed;
-        m_DestinationSetter.target = m_InitialTarget;
+        MoveTarget();
     }
 
     public void StopWalk() 
@@ -62,9 +57,9 @@ public class RandomWalker : MonoBehaviour
     {
         float dx, dy, dz;
         dx = Random.Range(-m_MaxDx, m_MaxDx);
-        dy = Random.Range(-m_MaxDy, m_MaxDy);
         dz = Random.Range(-m_MaxDz, m_MaxDz);
-        m_DestinationSetter.target.position += new Vector3(dx, dy, dz);
+        Vector3 newPosition = new Vector3(dx, 0, dz);
+        m_Path.destination = newPosition;
     }
   
     void Update()

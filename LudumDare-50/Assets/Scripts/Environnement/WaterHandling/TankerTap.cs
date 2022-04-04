@@ -40,5 +40,10 @@ namespace Environnement
                 tankerTapInteract.OnApproachTap(this);
             }
         }
+
+        private void OnDestroy()
+        {
+            m_Collection.RemoveElement(this);
+        }
     }
 }
