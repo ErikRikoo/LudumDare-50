@@ -51,6 +51,7 @@ public class Tortue : MonoBehaviour,ITankerTapInteractable
         
         // marcher jusqu'au trou
          Hole_to_block  = _tankerTap;
+         transform.forward = -(Hole_to_block.transform.position - transform.position).normalized;
          GoToHole = true;
          m_Animator.SetFloat("Movement", 1f);
          //arreter l'écoulement 
