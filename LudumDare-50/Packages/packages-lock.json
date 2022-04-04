@@ -21,13 +21,6 @@
       "dependencies": {},
       "hash": "fe6781e5db4305ea8680d215d5d14d0665262e2e"
     },
-    "com.rikoo.triggerable": {
-      "version": "https://github.com/ErikRikoo/com.rikoo.triggerable.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "caa3ced995cfe09d4874e263402a1ebdf5199fc1"
-    },
     "com.unity-atoms.unity-atoms-base-atoms": {
       "version": "4.4.3",
       "depth": 0,

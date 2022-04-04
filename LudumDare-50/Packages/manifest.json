@@ -19,7 +19,6 @@
   "dependencies": {
     "com.rikoo.editor-utilities": "https://github.com/ErikRikoo/com.rikoo.editor-utilities.git",
     "com.rikoo.interface-utilities": "https://github.com/ErikRikoo/com.rikoo.interface-utilities.git",
-    "com.rikoo.triggerable": "https://github.com/ErikRikoo/com.rikoo.triggerable.git",
     "com.unity-atoms.unity-atoms-base-atoms": "4.4.3",
     "com.unity-atoms.unity-atoms-core": "4.4.3",
     "com.unity-atoms.unity-atoms-fsm": "4.4.3",
