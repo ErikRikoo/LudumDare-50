@@ -9,7 +9,10 @@ namespace UI
     public class TextFader : MonoBehaviour
     {
         [SerializeField] private float m_FadeDuration = 0.5f;
-        
+        [Tooltip("Disappear or Appear")]
+        [SerializeField] private bool m_Appear;
+
+
         private TextMeshProUGUI m_Text;
 
         private void Awake()
@@ -43,7 +46,7 @@ namespace UI
 
         private void UpdateAlpha(float _interp)
         {
-            m_Text.alpha = _interp;
+            m_Text.alpha = m_Appear? 1 - _interp:_interp;
         }
     }
 }
