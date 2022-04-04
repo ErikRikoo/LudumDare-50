@@ -8,13 +8,13 @@ public class Eject_object : MonoBehaviour,IEjectable
 {
     
     [SerializeField] private float P_canon = 200;
-    [SerializeField] private ColliderEvent TakenByCanon;
+    [SerializeField] private ColliderEvent Taken;
     [SerializeField] private float time_delay = 0;
     
     
     public void OnPutIn(Canon _canon,Transform lanceur)
     {
-        TakenByCanon.Raise(GetComponent<Collider>());
+        Taken.Raise(GetComponent<Collider>());
 
         // l'objet va en position lanceur 
         transform.GetComponent<Rigidbody>().useGravity = false;

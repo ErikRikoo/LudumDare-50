@@ -46,11 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f80c0d4dd6de8e40b8f56aef7a36fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Taken: {fileID: 0}
   m_Animator: {fileID: 0}
   P_expulsion: 100
   max_angle_detection: 60
   position_object: {fileID: 4007911187659150650}
   Speed_come: 1
+  default_parent: {fileID: 0}
 --- !u!54 &403129689
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,11 +129,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f80c0d4dd6de8e40b8f56aef7a36fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Taken: {fileID: 11400000, guid: 9d01fc5e340dabe4eabe4fff201fbed4, type: 2}
   m_Animator: {fileID: 0}
   P_expulsion: 200
   max_angle_detection: 60
   position_object: {fileID: 4007911187659150650}
   Speed_come: 10
+  default_parent: {fileID: 0}
 --- !u!54 &1513950793
 Rigidbody:
   m_ObjectHideFlags: 0

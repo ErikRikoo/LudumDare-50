@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using Environnement;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
 public class Tortue : MonoBehaviour,ITankerTapInteractable
 {
     [SerializeField] private float Speed_tortue = 1;
-    
+    [SerializeField] private ColliderEvent Taken;
     
     private Animator m_Animator;
     private bool GoToHole = false;
@@ -48,7 +49,7 @@ public class Tortue : MonoBehaviour,ITankerTapInteractable
     public void OnApproachTap(TankerTap _tankerTap)
     {
         Debug.Log("LA TORTUE EST PRETE A BOUCHER LE TROU");
-        
+        Taken.Raise(GetComponent<Collider>());
         // marcher jusqu'au trou
          Hole_to_block  = _tankerTap;
          transform.forward = -(Hole_to_block.transform.position - transform.position).normalized;

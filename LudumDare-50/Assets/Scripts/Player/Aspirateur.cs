@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 public class Aspirateur : MonoBehaviour
 {
-    [SerializeField] private ColliderEvent TakenByCanon;
+    [SerializeField] private ColliderEvent Taken;
 
  [SerializeField] private Animator m_Animator;
  
@@ -23,6 +23,7 @@ public class Aspirateur : MonoBehaviour
  private int m_AspireKey;
     private List<Collider> objectProche;
     private Collider objetToAspire;
+    private bool have_object = false;
 
     private bool aspire_enCours = false;
   // [SerializeField]    private bool push_E = false;
@@ -31,7 +32,7 @@ public class Aspirateur : MonoBehaviour
     {
         objectProche = new List<Collider>();
         m_AspireKey = Animator.StringToHash("Aspire");
-        TakenByCanon.Register(DropObject);
+        Taken.Register(DropObject);
     }
 
     private void DropObject(Collider _collider)
@@ -39,10 +40,18 @@ public class Aspirateur : MonoBehaviour
        // Debug.Log("le canon a choppé un objet = " + _collider.GetComponent<Transform>().name);
         if (_collider == objetToAspire)
         {
-            objetToAspire.transform.parent = default_parent;
-            objetToAspire.transform.up = Vector3.up;
-            objetToAspire.attachedRigidbody.isKinematic = false;
-            objetToAspire = null;
+            if (have_object)
+            {
+                objetToAspire.transform.parent = default_parent;
+                objetToAspire.transform.up = Vector3.up;
+                objetToAspire.attachedRigidbody.isKinematic = false;
+                objetToAspire = null;
+                have_object = false;
+            }
+            else
+            {
+                have_object = true;
+            }
         }
     }
 
@@ -63,6 +72,7 @@ public class Aspirateur : MonoBehaviour
               return;
           aspire_enCours = true;
           objetToAspire.GetComponent<Rigidbody>().isKinematic = true;
+          Taken.Raise(objetToAspire);
           //objetToAspire.enabled = false;
           
       }

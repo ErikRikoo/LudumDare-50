@@ -539,6 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed_tortue: 1
+  Taken: {fileID: 11400000, guid: 9d01fc5e340dabe4eabe4fff201fbed4, type: 2}
 --- !u!1 &8302870279115615579
 GameObject:
   m_ObjectHideFlags: 0
