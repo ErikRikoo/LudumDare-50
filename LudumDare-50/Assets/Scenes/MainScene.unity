@@ -945,6 +945,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7389312110334954838, guid: 0a913246dff47254890d82d1d7d2b556, type: 3}
+      propertyPath: m_MaxDx
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389312110334954838, guid: 0a913246dff47254890d82d1d7d2b556, type: 3}
+      propertyPath: m_MaxDz
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389312110334954838, guid: 0a913246dff47254890d82d1d7d2b556, type: 3}
+      propertyPath: DirectionUpdateTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7612113341665235808, guid: 0a913246dff47254890d82d1d7d2b556, type: 3}
       propertyPath: m_RootOrder
       value: 10
