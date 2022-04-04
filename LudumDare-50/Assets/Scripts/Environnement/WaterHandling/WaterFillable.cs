@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Cinemachine;
+using UnityAtoms;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -24,7 +25,9 @@ namespace Environnement
 
         [HideInInspector]
         public float FillingAmount;
-        private float m_RealAmount;
+        [ReadOnly]
+        [Range(0, 1)]
+        [SerializeField] private float m_RealAmount;
 
         private float m_FillingStartTime;
 
