@@ -83,6 +83,9 @@
         },
         {
             "m_Id": "e2a1f646c90b45a78c6cbde76fdf93ba"
+        },
+        {
+            "m_Id": "52efa6d44bde4cd4a0fa3e8eb279c83c"
         }
     ],
     "m_GroupDatas": [],
@@ -271,6 +274,9 @@
             },
             {
                 "m_Id": "af959a0c718d4394a163bd010a859a11"
+            },
+            {
+                "m_Id": "52efa6d44bde4cd4a0fa3e8eb279c83c"
             }
         ]
     },
@@ -292,6 +298,21 @@
             "m_Id": "87120d38135e4d0893b6eafa9a2278a6"
         }
     ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "02313e4c0ad745a985d5518262419bda",
+    "m_Id": 0,
+    "m_DisplayName": "Alpha Clip Threshold",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "AlphaClipThreshold",
+    "m_StageCapability": 2,
+    "m_Value": 0.5,
+    "m_DefaultValue": 0.5,
+    "m_Labels": []
 }
 
 {
@@ -665,6 +686,39 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
+    "m_ObjectId": "52efa6d44bde4cd4a0fa3e8eb279c83c",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "SurfaceDescription.AlphaClipThreshold",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "02313e4c0ad745a985d5518262419bda"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SerializedDescriptor": "SurfaceDescription.AlphaClipThreshold"
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.ColorRGBMaterialSlot",
     "m_ObjectId": "57074480189f43b2b0881a942b6ff245",
     "m_Id": 0,
@@ -893,7 +947,7 @@
     "m_ZWriteControl": 0,
     "m_AlphaMode": 0,
     "m_RenderFace": 2,
-    "m_AlphaClip": false,
+    "m_AlphaClip": true,
     "m_CastShadows": true,
     "m_ReceiveShadows": true,
     "m_CustomEditorGUI": "",
