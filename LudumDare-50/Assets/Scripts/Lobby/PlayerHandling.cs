@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UI;
+using UnityAtoms.BaseAtoms;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,6 +16,8 @@ namespace Lobby
     
     public class PlayerHandling : MonoBehaviour
     {
+        [SerializeField] private VoidEvent m_GameStarted;
+        
         [SerializeField] private TextFader m_TextDisplay;
         
         [SerializeField] private Color[] m_PlayerColors;
@@ -156,6 +159,7 @@ namespace Lobby
 
         private void StartGame()
         {
+            m_GameStarted?.Raise();
             foreach (var player in m_Players)
             {
                 EnableGameplayInputs(player.Input);

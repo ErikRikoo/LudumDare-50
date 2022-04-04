@@ -97,8 +97,23 @@ MonoBehaviour:
   m_Animator: {fileID: 944949635706347234}
   RampageMaxSpeed: 2
   RampageMinTimer: 5
-  RampageRate: 0.236
+  RampageRate: 1
   AvailableTaps: {fileID: 11400000, guid: 3b4794b33ce865e458765edd09ad005e, type: 2}
+--- !u!114 &9040751283338361070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2684738206415541683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e71af6fa2549bc921581207e870e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameStart: {fileID: 11400000, guid: a0055f072208f5b4d82b30332130b562, type: 2}
+  m_Behaviors:
+  - {fileID: 7087204813272594422}
 --- !u!4 &2684738207294529349 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1017904609955518113, guid: bcf19e2e78f4f384c8c58f3adb8cc270, type: 3}
