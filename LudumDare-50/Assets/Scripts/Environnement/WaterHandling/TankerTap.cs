@@ -22,7 +22,7 @@ namespace Environnement
 
         private void Awake()
         {
-            StartFilling();
+            //StartFilling();
             m_Collection.AddElement(this);
         }
 

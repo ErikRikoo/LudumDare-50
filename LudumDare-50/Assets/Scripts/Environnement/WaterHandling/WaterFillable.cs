@@ -16,6 +16,7 @@ namespace Environnement
         [SerializeField] private float m_FillingRate;
         [SerializeField] private GameObject m_WaterVisual;
         [SerializeField] private Transform m_WaterSurface;
+        [SerializeField] private GameObject m_SplatVisual;
         [SerializeField]private float m_FillingDamping = 1;
 
         private BoxCollider m_Collider;
@@ -78,6 +79,7 @@ namespace Environnement
                 return;
             }
             m_WaterVisual.SetActive(m_RealAmount > 0);
+            m_SplatVisual.SetActive(m_RealAmount > 0);
             var newWaterPosition = m_WaterVisual.transform.localPosition;
             newWaterPosition.y = newHeight;
             m_WaterVisual.transform.localPosition = newWaterPosition;

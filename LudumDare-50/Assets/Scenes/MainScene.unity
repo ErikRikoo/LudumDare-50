@@ -185,7 +185,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6738739, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -610,6 +610,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6957883594107853161, guid: fcc356303ff086648bac00ad806aad4d, type: 3}
+      propertyPath: data.dataString
+      value: UEsDBBQAAAgIAAAIIex7md984wEAAMYDAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1U01z2jAQ/SsenxvGhgKhxxImPRTo2DlkkulhLa1tTWSJyhIQGP57tf4AZ9KeZL3d91b7dn0OWQkGmEWTABeuDr8F0Sj+EoRMK6udWcNxZYw2Hh8TilKm4oRNWkTIAeQbZBJ/oChK26X14FKKKmtypx6t4JhKvSPyJGrvK17gT1SFLYnZgEIlWAitujITjyEXVpsnIbED4/G9h20HPH9CXq6Iq5F41Jc1Dj1iUOIelH00sCtTZ3JguNacZMMHvdE2wT9OGAwpF2rvjBdcaikFR0M6Ocgah8E11uWHCn3gCY0Bof4VMThksE4+6eMPaEFI6qI1qn7z3+cg3IN09NK7OLhQv1Cs29jrb7q29VKodleryD+jLVhvaatxpIF49L07T3Q2crk2DPl37RSvl6i83GdGPIpm/yV1NTtKPB8tFj2t48QtqS71gWzbOiuFwpsTFNj4aSy1Usjo0UPLe1o3thtNIRisbeoPVm6VfH9+GdBQ0TJuYF957tJZK1Rx4xZO8I/uhnyaxXA/mwKfc+TI7nAyW3zN82zOIxxH8yxsuhBKWAHyl9eXtrfTL/hg4gqqRjFB5mcbNEtHm8UNHB7FqdKDLRAq1ynzm6G2rca1bb8TIL23fNX8CSk2LRA1PF/Cy19QSwMEFAAACAgAAAgh7E1th8BvAAAAegAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tFKKaZJhooWZaWKKeUpqSmqybqqxmaVJWlqSeYpBqpGBeZJSLFB9SWVBql9ibipET0BiSUZaZl5KZl66XlBqcmJxiTvIcKXYWgBQSwECLQAUAAAICAAACCHse5nffOMBAADGAwAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAACCHsTW2HwG8AAAB6AAAACQAkAAAAAAAAAAAAAAAwAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAOoCAAAAAA==
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcc356303ff086648bac00ad806aad4d, type: 3}
 --- !u!1001 &3873424404728576708
@@ -930,38 +934,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4392323461164188612, guid: 0a913246dff47254890d82d1d7d2b556, type: 3}
-      propertyPath: m_Size.y
-      value: 0.13368967
-      objectReference: {fileID: 0}
-    - target: {fileID: 4392323461164188612, guid: 0a913246dff47254890d82d1d7d2b556, type: 3}
-      propertyPath: m_Center.y
-      value: 0.06896983
-      objectReference: {fileID: 0}
-    - target: {fileID: 4392323461397964570, guid: 0a913246dff47254890d82d1d7d2b556, type: 3}
-      propertyPath: m_Size.y
-      value: 0.15927795
-      objectReference: {fileID: 0}
-    - target: {fileID: 4392323461397964570, guid: 0a913246dff47254890d82d1d7d2b556, type: 3}
-      propertyPath: m_Center.y
-      value: 0.08176397
-      objectReference: {fileID: 0}
-    - target: {fileID: 4392323461886385819, guid: 0a913246dff47254890d82d1d7d2b556, type: 3}
-      propertyPath: m_Size.y
-      value: 0.1455085
-      objectReference: {fileID: 0}
-    - target: {fileID: 4392323461886385819, guid: 0a913246dff47254890d82d1d7d2b556, type: 3}
-      propertyPath: m_Center.y
-      value: 0.074879244
-      objectReference: {fileID: 0}
-    - target: {fileID: 4392323462378929939, guid: 0a913246dff47254890d82d1d7d2b556, type: 3}
-      propertyPath: m_Size.y
-      value: 0.14710906
-      objectReference: {fileID: 0}
-    - target: {fileID: 4392323462378929939, guid: 0a913246dff47254890d82d1d7d2b556, type: 3}
-      propertyPath: m_Center.y
-      value: 0.075679526
-      objectReference: {fileID: 0}
     - target: {fileID: 7612113341665235808, guid: 0a913246dff47254890d82d1d7d2b556, type: 3}
       propertyPath: m_RootOrder
       value: 10
