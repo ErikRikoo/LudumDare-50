@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using GameStateHandling;
 using UnityEngine;
 
 
@@ -122,4 +124,4 @@ public class ChickenRampage : MonoBehaviour
         m_TargetTap = null;
         StopRampage();   
     }
- }
+}
