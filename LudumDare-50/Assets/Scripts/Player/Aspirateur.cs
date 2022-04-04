@@ -68,7 +68,7 @@ public class Aspirateur : MonoBehaviour
       {
           m_Animator?.SetBool(m_AspireKey, true);
           find_object_to_aspire();
-          if (objetToAspire == null)
+          if (objetToAspire == null) 
               return;
           aspire_enCours = true;
           objetToAspire.GetComponent<Rigidbody>().isKinematic = true;
@@ -102,8 +102,9 @@ public class Aspirateur : MonoBehaviour
         objectProche.Remove(other);
     }
     
-    private void find_object_to_aspire()
+    private void find_object_to_aspire()//TODO : si on ne peut pas prendre l'objet le plus proche parce qu'il est notcachable, on prend le second plus proche
     {
+        Collider temp = null;
         if (objectProche.Count < 1)
             return;
         
@@ -112,11 +113,17 @@ public class Aspirateur : MonoBehaviour
         {
             if (!verif_angle(objectProche[i]))
                 continue;
-            if(!objetToAspire)
-                objetToAspire = objectProche[0];
-            if (Vector3.Distance(transform.position,objectProche[i].transform.position) < Vector3.Distance(transform.position,objetToAspire.transform.position))
-                objetToAspire = objectProche[i];
+            if(!temp)
+                temp = objectProche[0];
+            if (Vector3.Distance(transform.position,objectProche[i].transform.position) < Vector3.Distance(transform.position,temp.transform.position))
+                temp = objectProche[i];
         }
+
+        if (!temp)//aucun objet dans la liste était à un angle valable
+            return;
+        if(temp.TryGetComponent(out notCatchable nom))// tryGetComponent return true si il y a le composant sur l'objet
+            return;
+        objetToAspire = temp;
         //Debug.Log("le plus proche = " + objetToAspire.name);
     }
 
