@@ -7,6 +7,7 @@ namespace Lobby
 {
     public class LobbyPlayerController : MonoBehaviour
     {
+        [SerializeField] private Animator m_Animator;
         [SerializeField] private Renderer m_RendererToUpdate;
         [SerializeField] private AudioSource m_ReadySource;
         
@@ -37,6 +38,7 @@ namespace Lobby
             
             ++m_PlayerHandling.PlayerReadyCount;
             m_ReadySource.Play();
+            m_Animator.SetTrigger("Ready");
             m_ReadynessChanged?.Invoke(true);
             //transform.localScale *= 1.1f;
             m_IsReady = true;

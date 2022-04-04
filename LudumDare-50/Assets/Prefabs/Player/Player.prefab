@@ -319,6 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786625fa8a894ab4a3ceeea499c5c353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Animator: {fileID: 2951652544208488382}
   m_RendererToUpdate: {fileID: 2560944377276107811}
   m_ReadySource: {fileID: 2616157909172971591}
   m_ReadynessChanged:
