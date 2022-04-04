@@ -43,6 +43,7 @@ public class Eject_object : MonoBehaviour,IEjectable
         transform.GetComponent<Rigidbody>().useGravity = true;
        transform.GetComponent<Rigidbody>().AddForce((transform.forward + transform.up) * P_canon);
        Debug.Log("bye bye PQ = " );
+       
        Destroy(_notCatchable); // TODO : un destroy qui fonctionne  
 
     }
