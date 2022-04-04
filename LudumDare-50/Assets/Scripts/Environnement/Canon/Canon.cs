@@ -12,6 +12,7 @@ namespace Environnement
             if (other.TryGetComponent(out IEjectable putInCanon))
             {
                 objet_to_eject = other;
+                other.gameObject.SendMessage("OnCatch");
                 putInCanon.OnPutIn(this,lanceur);
             }
         }

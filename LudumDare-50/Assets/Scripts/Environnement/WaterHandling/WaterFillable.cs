@@ -84,7 +84,7 @@ namespace Environnement
             m_WaterVisual.SetActive(m_RealAmount > 0);
             m_SplatVisual.SetActive(m_RealAmount > 0);
             var newWaterPosition = m_WaterVisual.transform.localPosition;
-            newWaterPosition.y = newHeight;
+            newWaterPosition.y = newSize.y;
             m_WaterVisual.transform.localPosition = newWaterPosition;
 
             if (m_RealAmount <= 0)
@@ -105,6 +105,10 @@ namespace Environnement
 
         public void StopFilling()
         {
+            if (m_FillingCoroutine == null)
+            {
+                return;
+            }
             StopCoroutine(m_FillingCoroutine);
         }
 

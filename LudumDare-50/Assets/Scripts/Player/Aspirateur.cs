@@ -71,6 +71,8 @@ public class Aspirateur : MonoBehaviour
           if (objetToAspire == null) 
               return;
           aspire_enCours = true;
+          // TODO: Stop using broadcast message
+          objetToAspire.gameObject.BroadcastMessage("OnCatch");
           objetToAspire.GetComponent<Rigidbody>().isKinematic = true;
           Taken.Raise(objetToAspire);
           //objetToAspire.enabled = false;
@@ -168,6 +170,10 @@ public class Aspirateur : MonoBehaviour
         objetToAspire.transform.parent = default_parent;
         objetToAspire.transform.up = Vector3.up;
         objetToAspire.attachedRigidbody.isKinematic = false;
+        // TODO: Stop using broadcast message
+
+        objetToAspire.gameObject.BroadcastMessage("OnDropped");
+
         objetToAspire.attachedRigidbody.AddForce((transform.forward + transform.up)*P_expulsion);
         Debug.Log("expulse object = " );
     }

@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(AIPath))]
 public class RandomWalker : MonoBehaviour
 {
+    [SerializeField] private Animator m_Animator;
+    
     [SerializeField] float MaxSpeed = 1;
     [SerializeField] int DirectionUpdateTime;
     [SerializeField] private int m_MaxDx;
@@ -22,16 +24,31 @@ public class RandomWalker : MonoBehaviour
         StartWalk();
     }
 
+    public void OnDropped()
+    {
+        StartWalk();
+    }
+    
     public void StartWalk() 
     {
         m_IsWalking = true;
+        m_Path.canMove = true;
         m_Path.maxSpeed = MaxSpeed;
+        m_Animator.SetFloat("Movement", 1);
         MoveTarget();
+    }
+
+    public void OnCatch()
+    {
+        StopWalk();
     }
 
     public void StopWalk() 
     {
         m_IsWalking = false;
+        m_Path.canMove = false;
+        m_Animator.SetFloat("Movement", 0);
+
     }
 
     public bool IsWalking()

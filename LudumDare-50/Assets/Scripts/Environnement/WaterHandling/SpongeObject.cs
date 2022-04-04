@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace Environnement
 {
-    public class SpongeObject : MonoBehaviour, IWaterInteractable
+    public class SpongeObject : MonoBehaviour, IWaterInteractable, IWaterHolder
     {
         [Header("Events")]
         [SerializeField] private UnityEvent<float> m_OnFillingAmountChanged;
@@ -21,6 +21,18 @@ namespace Environnement
 
         [SerializeField]
         private float m_FillingAmount;
+
+        private float FillingAmount
+        {
+            get => m_FillingAmount;
+            set
+            {
+                m_FillingAmount = value;
+                m_OnFillingAmountChanged?.Invoke(m_FillingAmount / m_MaxAmount);
+
+            }
+        }
+        
         private Collider m_Collider;
 
         public Collider Collider => m_Collider;
@@ -40,9 +52,8 @@ namespace Environnement
         public void AbsorbWater(ref float _tankerFillAmount)
         {
             var amount = Mathf.Min(m_MaxAmount - m_FillingAmount, m_FillingRate * Time.deltaTime, _tankerFillAmount);
-            m_FillingAmount += amount;
+            FillingAmount += amount;
             _tankerFillAmount -= amount;
-            m_OnFillingAmountChanged?.Invoke(m_FillingAmount / m_MaxAmount);
             if (!CanAbsorbWater)
             {
                 m_OnFull?.Invoke();
@@ -53,7 +64,6 @@ namespace Environnement
 
         private IEnumerator c_SpongeWater(WaterFillable _waterFillable)
         {
-            float startTime = Time.time + Random.Range(0, 5.17f);
             _waterFillable.AttachOnSurface(Collider);
 
             while (true)
@@ -89,6 +99,50 @@ namespace Environnement
             {
                 Rigidbody.useGravity = true;
             }
+        }
+
+        [SerializeField] private float m_EmptyingSpeed;
+        
+        private Coroutine m_EmptyCoroutine;
+
+        public bool AlreadyEmptying => m_EmptyCoroutine != null || IsEmpty;
+
+        public bool IsEmpty => m_FillingAmount <= 0f;
+        public void OnStartEmptying()
+        {
+            Debug.Log("On Start Emptying: " + m_EmptyCoroutine + " " + m_FillingAmount);
+            if (AlreadyEmptying)
+            {
+                return;
+            }
+
+            m_EmptyCoroutine = StartCoroutine(c_Emptying());
+        }
+
+        private IEnumerator c_Emptying()
+        {
+            while (!IsEmpty)
+            {
+                yield return null;
+                var emptyValue = m_EmptyingSpeed * Time.deltaTime;
+                if (emptyValue > FillingAmount)
+                {
+                    break;
+                }
+                FillingAmount -= emptyValue;
+            }
+
+            FillingAmount = 0;
+        }
+
+        public void OnEndEmptying()
+        {
+            if (m_EmptyCoroutine == null)
+            {
+                return;
+            }
+            
+            StopCoroutine(m_EmptyCoroutine);
         }
     }
 }

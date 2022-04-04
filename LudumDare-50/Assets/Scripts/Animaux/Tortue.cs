@@ -10,6 +10,7 @@ public class Tortue : MonoBehaviour,ITankerTapInteractable
     [SerializeField] private float Speed_tortue = 1;
     [SerializeField] private ColliderEvent Taken;
     
+    [SerializeField]
     private Animator m_Animator;
     private bool GoToHole = false;
     private TankerTap Hole_to_block;
@@ -23,7 +24,6 @@ public class Tortue : MonoBehaviour,ITankerTapInteractable
 
     private void Awake()
     {
-        m_Animator = GetComponent<Animator>();
         m_Animator.SetFloat("Movement", 0.5f);
     }
 

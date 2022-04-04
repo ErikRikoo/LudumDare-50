@@ -68,6 +68,9 @@ public class ChickenRampage : MonoBehaviour
         m_TargetTap = valid_taps.ElementAt(Random.Range(0, valid_taps.Count()));
         m_Path.destination = m_TargetTap.transform.position;
         m_Walker.StopWalk();
+        m_Path.canMove = true;
+        m_Animator.SetFloat("Movement", 1.2f);
+
 
         m_IsOnRampage = true;
         m_Path.maxSpeed = RampageMaxSpeed;
