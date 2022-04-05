@@ -101,6 +101,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9eea86352b64eb0428498f38132c75f6, type: 3}
+--- !u!114 &5691497383216549044 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4504946665777671296, guid: 9eea86352b64eb0428498f38132c75f6, type: 3}
+  m_PrefabInstance: {fileID: 8104381086470119476}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5691497383216549045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec25a9bd4115e4047af7f6626d62d193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5691497383216549045 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4504946665777671297, guid: 9eea86352b64eb0428498f38132c75f6, type: 3}
@@ -120,9 +131,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 3335418374878539431}
   RampageMaxSpeed: 2
-  RampageMinTimer: 5
+  RampageMinTimer: 2.5
   RampageRate: 1
   AvailableTaps: {fileID: 11400000, guid: 3b4794b33ce865e458765edd09ad005e, type: 2}
+  m_Walker: {fileID: 5691497383216549044}
 --- !u!114 &1898503067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +260,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6466038228485422322, guid: 852581bf46016d1468b9e6799c214363, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466038228485422322, guid: 852581bf46016d1468b9e6799c214363, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466038228485422322, guid: 852581bf46016d1468b9e6799c214363, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466038228485422322, guid: 852581bf46016d1468b9e6799c214363, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -286,6 +310,10 @@ PrefabInstance:
     - target: {fileID: 6466038228485422322, guid: 852581bf46016d1468b9e6799c214363, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466038228485422322, guid: 852581bf46016d1468b9e6799c214363, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6707777005244457607, guid: 852581bf46016d1468b9e6799c214363, type: 3}
       propertyPath: m_Layer
@@ -331,6 +359,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ActionName: Poulet_Attaque1
+  m_OnActionEnded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1898503066}
+        m_TargetAssemblyTypeName: ChickenRampage, Assembly-CSharp
+        m_MethodName: OnAttackEnded
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6424474029810989861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2488415295668950004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59692cc1d5024cefa15579bae98252f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ActionName: Poulet_Attaque2
   m_OnActionEnded:
     m_PersistentCalls:
       m_Calls:

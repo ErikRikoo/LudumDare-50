@@ -275,7 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 2951652544208488382}
   m_target: {fileID: 3328126528931206120}
-  m_Speed: 4
+  m_Speed: 3
   m_Damping: 5.45
 --- !u!54 &6785049879547139456
 Rigidbody:
@@ -348,6 +348,10 @@ PrefabInstance:
       propertyPath: TakenByCanon
       value: 
       objectReference: {fileID: 11400000, guid: 9d01fc5e340dabe4eabe4fff201fbed4, type: 2}
+    - target: {fileID: 1370383198838882572, guid: 4abda286accaba44b996f53f6fe14a64, type: 3}
+      propertyPath: max_angle_detection
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1696120350474415297, guid: 4abda286accaba44b996f53f6fe14a64, type: 3}
       propertyPath: m_Layer
       value: 7

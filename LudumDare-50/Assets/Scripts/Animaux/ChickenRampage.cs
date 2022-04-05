@@ -20,6 +20,7 @@ public class ChickenRampage : MonoBehaviour
     private Pathfinding.AIPath m_Path;
 
     private Environnement.TankerTap m_TargetTap;
+    [SerializeField]
     private RandomWalker m_Walker;
 
     private float m_RampageTimer;
@@ -32,7 +33,7 @@ public class ChickenRampage : MonoBehaviour
 
     void Start()
     {
-        m_Walker = GetComponent<RandomWalker>();
+        //m_Walker = GetComponent<RandomWalker>();
         m_Path = GetComponent<Pathfinding.AIPath>();
     }
 
@@ -88,11 +89,17 @@ public class ChickenRampage : MonoBehaviour
         if(HasReachedTap && !m_AttackStarted)
         {
             Debug.Log("Reached target");
+            m_Animator.SetInteger("AnimationIndex", Random.Range(0, 2));
             m_Animator.SetTrigger("Attack");
             m_AttackStarted = true;
             //TODO: add chicken combat animation
        
         }
+    }
+
+    public void OnCatch()
+    {
+        StopRampage();
     }
 
     private void StopRampage()

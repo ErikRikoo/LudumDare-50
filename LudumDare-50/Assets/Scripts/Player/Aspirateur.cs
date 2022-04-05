@@ -117,7 +117,7 @@ public class Aspirateur : MonoBehaviour
                 continue;
             if(!temp)
                 temp = objectProche[0];
-            if (Vector3.Distance(transform.position,objectProche[i].transform.position) < Vector3.Distance(transform.position,temp.transform.position))
+            if (!objectProche[i].IsDestroyed() && Vector3.Distance(transform.position,objectProche[i].transform.position) < Vector3.Distance(transform.position,temp.transform.position))
                 temp = objectProche[i];
         }
 
@@ -131,10 +131,15 @@ public class Aspirateur : MonoBehaviour
 
     private bool verif_angle(Collider other)
     {
+        if (other.IsDestroyed())
+        {
+            return false;
+        }
+        
         Vector2 vect_aspirateur = new Vector2(transform.forward.x, transform.forward.z);
         Vector2 vect_object = new Vector2(other.transform.position.x-transform.position.x, other.transform.position.z-transform.position.z);
         float angle = Vector2.SignedAngle(vect_aspirateur, vect_object);
-        Debug.Log("angle for collide = " + angle);
+        Debug.Log("angle for collide = " + angle + $" & MAX = {max_angle_detection}");
         if (Mathf.Abs(angle) <= max_angle_detection)
             return true;
         return false;
